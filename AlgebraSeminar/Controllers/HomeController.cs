@@ -52,14 +52,14 @@ namespace AlgebraSeminar.Controllers
             }
             return View(predbiljezba);
         }
-        [Authorize]
+        [AuthorizeJWT]
         [HttpGet]
         public ActionResult Predbiljezbe()
         {
             List<Predbiljezba> model = _predbiljezbe.GetPredbiljezbe();
             return View(model);
         }
-        [Authorize]
+        [AuthorizeJWT]
         [HttpPost]
         public ActionResult Predbiljezbe(string query, string tippretrage)
         {
@@ -70,7 +70,7 @@ namespace AlgebraSeminar.Controllers
 
             return View(model);
         }
-        [Authorize]
+        [AuthorizeJWT]
         [HttpGet]
         public ActionResult UrediPredbiljezbu(int IdPredbiljezba)
         {
@@ -81,7 +81,7 @@ namespace AlgebraSeminar.Controllers
             };
             return View(model);
         }
-        [Authorize]
+        [AuthorizeJWT]
         [HttpPost]
         public ActionResult UrediPredbiljezbu(Predbiljezba predbiljezba)
         {
@@ -103,18 +103,14 @@ namespace AlgebraSeminar.Controllers
             }
 
         }
-        //public ActionResult Seminari()
-        //{
-        //    List<Seminar> model = _seminari.GetAllSeminars();
-        //    return View(model);
-        //}
-        [Authorize]
+
+        [AuthorizeJWT]
         [HttpGet]
         public ActionResult DodajNovogZaposlenika()
         {
             return View();
         }
-        [Authorize]
+        [AuthorizeJWT]
         [HttpPost]
         public ActionResult DodajNovogZaposlenika(Zaposlenik zaposlenik)
         {

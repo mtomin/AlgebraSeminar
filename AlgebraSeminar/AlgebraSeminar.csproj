@@ -168,7 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Data\AlgebraDBContext.cs" />
     <Compile Include="DTOs\ZaposlenikZaLogin.cs" />
     <Compile Include="Global.asax.cs">
@@ -199,6 +199,7 @@
       <DependentUpon>201906040936373_FK_fix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AuthorizeJWT.cs" />
     <Compile Include="Models\IZaposlenikRepository.cs" />
     <Compile Include="Models\IPredbiljezbaRepository.cs" />
     <Compile Include="Models\ISeminarRepository.cs" />
@@ -257,8 +258,8 @@
     <Content Include="Views\Home\UrediPredbiljezbu.cshtml" />
     <Content Include="Views\Home\Seminari.cshtml" />
     <Content Include="Views\Home\DodajNovogZaposlenika.cshtml" />
-    <Content Include="Views\Login\Prijava.cshtml" />
-    <Content Include="Views\Login\LoginUspjesan.cshtml" />
+    <Content Include="Views\Auth\Prijava.cshtml" />
+    <Content Include="Views\Auth\LoginUspjesan.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

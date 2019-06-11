@@ -1,5 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
@@ -7,7 +8,7 @@ namespace AlgebraSeminar.Models
 {
     public class TokenManager
     {
-        private static readonly string secret = "n6Vm4BfLuaJwENL/EKqKn7FjacWRzuXjjglLv21QI6/AvSK/iU7hqY53+AYV6KaJyfEPGx+Ai9iHgjsxGFvODQ==";
+        private static readonly string secret = ConfigurationManager.AppSettings["JWTsecret"];
 
         public static string GenerateToken(string username)
         {
@@ -19,7 +20,7 @@ namespace AlgebraSeminar.Models
                 Subject = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.Name, username)}),
                 Expires = DateTime.Now.AddMinutes(30),
-                SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature),
             };
 
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
