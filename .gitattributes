@@ -61,3 +61,5 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+AlgebraSeminar/Views/* linguist-detectable=false
+AlgebraSeminar/Scripts/* linguist-detectable=false
