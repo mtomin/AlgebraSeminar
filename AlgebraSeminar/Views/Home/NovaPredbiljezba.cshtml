@@ -1,0 +1,55 @@
+﻿@model AlgebraSeminar.DTOs.PredbiljezbaZaUpis
+@{
+    ViewBag.Title = "NovaPredbiljezba";
+}
+<h1>Unos nove predbilježbe za seminar @Model.Seminar.Naziv</h1>
+
+<form class="form-horizontal" action="NovaPredbiljezba" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Predbiljezba.SeminarId, Model.Predbiljezba.SeminarId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Ime, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Predbiljezba.Ime, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Predbiljezba.Ime, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Prezime, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Predbiljezba.Prezime, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Predbiljezba.Prezime, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Adresa, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Predbiljezba.Adresa, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Predbiljezba.Adresa, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Email, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Predbiljezba.Email, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Predbiljezba.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Telefon, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Predbiljezba.Telefon, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Predbiljezba.Telefon, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Seminar.Datum, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Seminar.Datum, new { @readonly="readonly", @class = "form-control col-sm-10" })
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-1">
+            <input type="submit" value="Pošalji" class="btn btn-default" />
+        </div>
+    </div>
+</form>

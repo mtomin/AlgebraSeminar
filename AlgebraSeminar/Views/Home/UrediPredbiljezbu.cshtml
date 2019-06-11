@@ -1,0 +1,82 @@
+﻿@model AlgebraSeminar.DTOs.PredbiljezbaZaEdit
+@{
+    ViewBag.Title = "Uredi Predbiljezbu";
+}
+
+<h2>Uredi Predbiljezbu broj @Model.Predbiljezba.IdPredbiljezba</h2>
+
+<form class="form-horizontal" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.Predbiljezba.Datum, Model.Predbiljezba.Datum)
+        @Html.HiddenFor(model => model.Predbiljezba.IdPredbiljezba, Model.Predbiljezba.IdPredbiljezba)
+        @Html.HiddenFor(model => model.Predbiljezba.Seminar.Datum, Model.Predbiljezba.Seminar.Datum)
+        @Html.HiddenFor(model => model.Predbiljezba.Seminar.BrojSlobodnihMjesta, Model.Predbiljezba.Seminar.BrojSlobodnihMjesta)
+        @Html.HiddenFor(model => model.Predbiljezba.Seminar.Naziv, Model.Predbiljezba.Seminar.Naziv)
+        @Html.HiddenFor(model => model.Predbiljezba.Seminar.Opis, Model.Predbiljezba.Seminar.Opis)
+        @Html.HiddenFor(model => model.Predbiljezba.Seminar.Predavac, Model.Predbiljezba.Seminar.Predavac)
+        @Html.HiddenFor(model => model.Predbiljezba.Seminar.SeminarId, Model.Predbiljezba.Seminar.SeminarId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Seminar, new { @class = "control-label col-sm-2" })
+        @Html.DropDownListFor(model => model.Predbiljezba.SeminarId, Model.Seminari
+           .Select(s => new SelectListItem
+           {
+               Text = String.Format("{0} ({1})", s.Naziv, s.Datum),
+               Value = s.SeminarId.ToString(),
+               Selected = s.SeminarId == Model.Predbiljezba.SeminarId
+           }), new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Ime, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Predbiljezba.Ime, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Predbiljezba.Ime, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Prezime, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Predbiljezba.Prezime, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Predbiljezba.Prezime, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Adresa, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Predbiljezba.Adresa, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Predbiljezba.Adresa, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Email, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Predbiljezba.Email, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Predbiljezba.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Telefon, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Predbiljezba.Telefon, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Predbiljezba.Telefon, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Predbiljezba.Status, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.RadioButtonFor(model => model.Predbiljezba.Status, "2") Prihvaćena
+            @Html.RadioButtonFor(model => model.Predbiljezba.Status, "1") Odbijena
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-1">
+            <input type="submit" value="Uredi" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+
+<div class="text-danger">
+@Model.Message
+</div>

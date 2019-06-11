@@ -1,0 +1,122 @@
+﻿@model List<AlgebraSeminar.Models.Predbiljezba>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Predbiljezbe</title>
+</head>
+<body>
+    @using (Html.BeginForm("Predbiljezbe", "Home", FormMethod.Post))
+    {
+        <div class="md-form mt-0" style="padding-top: 10px">
+            <input class="form-control" type="text" placeholder="Pretraži..." name="query">
+            <div style="padding-top: 10px">
+                <input class="btn btn-primary" type="submit" value="Pretraži po prezimenu" , name="tippretrage">
+                <input class="btn btn-primary" type="submit" value="Pretraži po seminaru" name="tippretrage">
+            </div>
+        </div>
+    }
+
+    <h2>Neobrađene predbilježbe</h2>
+    <table class="table table-responsive">
+        <thead>
+            <tr data-toggle="collapse" data-target=".table1">
+                <th scope="col">Ime</th>
+                <th scope="col">Prezime</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">Naziv seminara</th>
+                <th scope="col">Datum seminara</th>
+                <th scope="col">Datum prijave</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="collapse in table1">
+            @{
+                foreach (var predbiljezba in Model.Where(m => m.Status == 0))
+                {
+                    <tr>
+                        <td>@predbiljezba.Ime</td>
+                        <td>@predbiljezba.Prezime</td>
+                        <td>@predbiljezba.Email</td>
+                        <td>@predbiljezba.Telefon</td>
+                        <td>@predbiljezba.Seminar.Naziv</td>
+                        <td>@predbiljezba.Seminar.Datum</td>
+                        <td>@predbiljezba.Datum</td>
+                        <td>@Html.ActionLink("Odaberi", "UrediPredbiljezbu", new { IdPredbiljezba = predbiljezba.IdPredbiljezba })</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <h2>Prihvaćene predbilježbe</h2>
+    <table class="table table-responsive">
+        <thead>
+            <tr data-toggle="collapse" data-target=".table2">
+                <th scope="col">Ime</th>
+                <th scope="col">Prezime</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">Naziv seminara</th>
+                <th scope="col">Datum seminara</th>
+                <th scope="col">Datum prijave</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody  class="collapse in table2">
+            @{
+                foreach (var predbiljezba in Model.Where(m => m.Status == 2))
+                {
+                    <tr>
+                        <td>@predbiljezba.Ime</td>
+                        <td>@predbiljezba.Prezime</td>
+                        <td>@predbiljezba.Email</td>
+                        <td>@predbiljezba.Telefon</td>
+                        <td>@predbiljezba.Seminar.Naziv</td>
+                        <td>@predbiljezba.Seminar.Datum</td>
+                        <td>@predbiljezba.Datum</td>
+                        <td>@Html.ActionLink("Odaberi", "UrediPredbiljezbu", new { IdPredbiljezba = predbiljezba.IdPredbiljezba })</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <h2>Odbijene predbilježbe</h2>
+    <table class="table table-responsive">
+        <thead>
+            <tr data-toggle="collapse" data-target=".table3" aria-expanded="true">
+                <th scope="col">Ime</th>
+                <th scope="col">Prezime</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">Naziv seminara</th>
+                <th scope="col">Datum seminara</th>
+                <th scope="col">Datum prijave</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody  class="collapse in table3">
+            @{
+                foreach (var predbiljezba in Model.Where(m => m.Status == 1))
+                {
+                    <tr>
+                        <td>@predbiljezba.Ime</td>
+                        <td>@predbiljezba.Prezime</td>
+                        <td>@predbiljezba.Email</td>
+                        <td>@predbiljezba.Telefon</td>
+                        <td>@predbiljezba.Seminar.Naziv</td>
+                        <td>@predbiljezba.Seminar.Datum</td>
+                        <td>@predbiljezba.Datum</td>
+                        <td>@Html.ActionLink("Odaberi", "UrediPredbiljezbu", new { IdPredbiljezba = predbiljezba.IdPredbiljezba })</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

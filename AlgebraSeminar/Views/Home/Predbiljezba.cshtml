@@ -1,0 +1,50 @@
+﻿@model List<AlgebraSeminar.Models.Seminar>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Predbilježba</title>
+</head>
+<body>
+    @using (Html.BeginForm("Predbiljezba", "Home", FormMethod.Get))
+    {
+        <div class="md-form mt-0" style="padding-top: 10px">
+            <input class="form-control" type="text" placeholder="Pretraži..." name="query">
+            <div style="padding-top: 10px">
+                <input class="btn btn-primary" type="submit" value="Pretraži">
+            </div>
+        </div>
+    }
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Naziv seminara</th>
+                <th scope="col">Opis</th>
+                <th scope="col">Datum</th>
+                <th scope="col">Predavač</th>
+                <th scope="col">Broj mjesta</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var seminar in Model)
+                {
+                    <tr>
+                        <td>@Html.ActionLink("odaberi", "NovaPredbiljezba", new { seminarId = seminar.SeminarId })</td>
+                        <td>@seminar.Naziv</td>
+                        <td>@seminar.Opis</td>
+                        <td>@seminar.Datum.ToShortDateString()</td>
+                        <td>@seminar.Predavac</td>
+                        <td>@seminar.BrojSlobodnihMjesta</td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>
