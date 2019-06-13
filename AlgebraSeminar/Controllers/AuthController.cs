@@ -9,7 +9,6 @@ namespace AlgebraSeminar.Controllers
     public class AuthController : Controller
     {
         private readonly IZaposlenikRepository _zaposlenici;
-
         public AuthController(IZaposlenikRepository zaposlenici)
         {
             _zaposlenici = zaposlenici;
@@ -27,21 +26,23 @@ namespace AlgebraSeminar.Controllers
             if (ModelState.IsValid)
             {
                 zaposlenik.KorisnickoIme = zaposlenik.KorisnickoIme.ToLower();
-                if (_zaposlenici.PrijavaUspjela(zaposlenik))
+                Zaposlenik trenutniZaposlenik = _zaposlenici.PrijavljeniZaposlenik(zaposlenik);
+                if (trenutniZaposlenik != null)
                 {
-                    string token = TokenManager.GenerateToken(zaposlenik.KorisnickoIme);
+                    string token = TokenManager.GenerateToken(trenutniZaposlenik);
                     System.Web.HttpContext.Current.Response.Cookies.Add(new HttpCookie("auth_token")
                     {
                         Value = token,
                         HttpOnly = true
                     });
-
+                    Session["TrenutniZaposlenik"] = String.Format("Prijavljeni ste kao {0} {1}", trenutniZaposlenik.Ime, trenutniZaposlenik.Prezime);
                     return View("LoginUspjesan");
                 }
+                ViewBag.ErrorMessage = "Korisničko ime ili lozinka nisu ispravni!";
             }
             return View();
         }
-        
+
         public ActionResult Odjava()
         {
             HttpCookie authCookie = Request.Cookies["auth_token"];

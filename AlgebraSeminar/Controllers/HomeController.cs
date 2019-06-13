@@ -81,6 +81,7 @@ namespace AlgebraSeminar.Controllers
             };
             return View(model);
         }
+
         [AuthorizeJWT]
         [HttpPost]
         public ActionResult UrediPredbiljezbu(Predbiljezba predbiljezba)

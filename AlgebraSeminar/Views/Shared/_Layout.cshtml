@@ -21,17 +21,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Predbilježba", "Predbiljezba", "Home")</li>
-                    <li>@Html.ActionLink("Predbilježbe", "Predbiljezbe", "Home")</li>
-                    @{
-                        if (Request.Cookies["auth_token"] == null)
-                        {
-                            <li>@Html.ActionLink("Prijava", "Prijava", "Auth")</li>
-                        }
-                        else
-                        {
-                            <li>@Html.ActionLink("Odjava", "Odjava", "Auth")</li>
-                        }
-                    }
+                    <li>@Html.ActionLink("Prijava", "Prijava", "Auth")</li>
                 </ul>
             </div>
         </div>

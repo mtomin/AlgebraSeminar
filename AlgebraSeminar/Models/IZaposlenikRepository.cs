@@ -6,6 +6,6 @@ namespace AlgebraSeminar.Models
     {
         void KreirajZaposlenika(Zaposlenik zaposlenik);
         Zaposlenik DohvatiZaposlenika(int IdZaposlenik);
-        bool PrijavaUspjela(ZaposlenikZaLogin zaposlenik);
+        Zaposlenik PrijavljeniZaposlenik(ZaposlenikZaLogin zaposlenik);
     }
 }

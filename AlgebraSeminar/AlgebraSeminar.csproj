@@ -198,6 +198,10 @@
     <Compile Include="Migrations\201906040936373_FK_fix.Designer.cs">
       <DependentUpon>201906040936373_FK_fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906130822139_fixedlength.cs" />
+    <Compile Include="Migrations\201906130822139_fixedlength.Designer.cs">
+      <DependentUpon>201906130822139_fixedlength.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthorizeJWT.cs" />
     <Compile Include="Models\IZaposlenikRepository.cs" />
@@ -260,6 +264,7 @@
     <Content Include="Views\Home\DodajNovogZaposlenika.cshtml" />
     <Content Include="Views\Auth\Prijava.cshtml" />
     <Content Include="Views\Auth\LoginUspjesan.cshtml" />
+    <Content Include="Views\Shared\_Layout_registered.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -293,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906040936373_FK_fix.resx">
       <DependentUpon>201906040936373_FK_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906130822139_fixedlength.resx">
+      <DependentUpon>201906130822139_fixedlength.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

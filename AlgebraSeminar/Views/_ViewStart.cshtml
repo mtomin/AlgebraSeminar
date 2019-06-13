@@ -1,3 +1,27 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@using System.IdentityModel.Tokens.Jwt
+
+@{
+    if (Request.Cookies["auth_token"] == null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var token = handler.ReadToken(Request.Cookies["auth_token"].Value) as JwtSecurityToken;
+            if (token.ValidTo > DateTime.UtcNow)
+            {
+                Layout = "~/Views/Shared/_Layout_registered.cshtml";
+                Session["TrenutniZaposlenik"] = token.Claims.First(claim => claim.Type == "given_name").Value;
+            }
+            else
+            {
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                Session["TrenutniKorisnik"] = null;
+            }
+
+        }
+    }
 }

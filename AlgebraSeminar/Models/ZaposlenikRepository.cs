@@ -43,14 +43,14 @@ namespace AlgebraSeminar.Models
             return Convert.ToBase64String(hashedSaltedPassword);
         }
 
-        public bool PrijavaUspjela(ZaposlenikZaLogin zaposlenik)
+        public Zaposlenik PrijavljeniZaposlenik(ZaposlenikZaLogin zaposlenik)
         {
             Zaposlenik userData = DbContext.Zaposlenici
                 .FirstOrDefault(z => z.KorisnickoIme == zaposlenik.KorisnickoIme);
 
             if (userData == null)
             {
-                return false;
+                return null;
             }
 
             byte[] salt = Convert.FromBase64String(userData.LozinkaSalt);
@@ -63,9 +63,9 @@ namespace AlgebraSeminar.Models
 
             if (Convert.ToBase64String(passwordHash) != userData.Lozinka)
             {
-                return false;
+                return null;
             }
-            return true;
+            return userData;
         }
     }
 }
