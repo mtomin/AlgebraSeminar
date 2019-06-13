@@ -10,16 +10,16 @@ namespace AlgebraSeminar.Models
     {
         [Key]
         public int IdZaposlenik { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Ime zaposlenika je obavezno!")]
         [StringLength(50)]
         public string Ime { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Prezime zaposlenika je obavezno!")]
         [StringLength(50)]
         public string Prezime { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Korisničko ime je obavezno!")]
         [StringLength(20)]
         public string KorisnickoIme { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Lozinka je obavezna!")]
         [StringLength(100)]
         public string Lozinka { get; set; }
         [Required]

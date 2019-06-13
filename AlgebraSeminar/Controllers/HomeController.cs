@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace AlgebraSeminar.Controllers
 {
+    [HandleError(View = "Error.cshtml")]
     public class HomeController : Controller
     {
         private readonly ISeminarRepository _seminari;
@@ -30,13 +31,11 @@ namespace AlgebraSeminar.Controllers
         [HttpGet]
         public ActionResult NovaPredbiljezba(int seminarId)
         {
-            PredbiljezbaZaUpis model = new PredbiljezbaZaUpis
+            Session["OdabraniSeminar"] = _seminari.GetSeminar(seminarId);
+
+            Predbiljezba model = new Predbiljezba
             {
-                Seminar = _seminari.GetSeminar(seminarId),
-                Predbiljezba = new Predbiljezba
-                {
-                    SeminarId = seminarId,
-                }
+                SeminarId = seminarId,
             };
             return View(model);
         }
@@ -46,8 +45,9 @@ namespace AlgebraSeminar.Controllers
         {
             if (ModelState.IsValid)
             {
-                predbiljezba.Datum = DateTime.Now;
+                
                 _predbiljezbe.UpisiPredbiljezbu(predbiljezba);
+                Session["OdabraniSeminar"] = null;
                 return View("PredbiljezbaSuccess");
             }
             return View(predbiljezba);
@@ -59,6 +59,7 @@ namespace AlgebraSeminar.Controllers
             List<Predbiljezba> model = _predbiljezbe.GetPredbiljezbe();
             return View(model);
         }
+
         [AuthorizeJWT]
         [HttpPost]
         public ActionResult Predbiljezbe(string query, string tippretrage)

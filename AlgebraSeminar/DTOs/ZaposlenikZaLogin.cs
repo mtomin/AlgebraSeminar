@@ -4,9 +4,9 @@ namespace AlgebraSeminar.DTOs
 {
     public class ZaposlenikZaLogin
     {
-        [Required]
+        [Required(ErrorMessage = "Korisničko ime je obavezno!")]
         public string KorisnickoIme { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Lozinka je obavezna!")]
         public string Lozinka { get; set; }
     }
 }

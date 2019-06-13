@@ -13,19 +13,19 @@ namespace AlgebraSeminar.Models
         public int IdPredbiljezba { get; set; }
         [Required]
         public DateTime Datum { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Ime je obavezno!")]
         [StringLength(50)]
         public string Ime { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Prezime je obavezno!")]
         [StringLength(50)]
         public string Prezime { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Adresa je obavezna!")]
         [StringLength(100)]
         public string Adresa { get; set; }
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "E-mail adresa je obavezna!")]
+        [EmailAddress(ErrorMessage = "Format e-mail adrese nije valjan!")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Broj telefona je obavezan!")]
         [StringLength(30)]
         public string Telefon { get; set; }
         [Required, ForeignKey("Seminar")]

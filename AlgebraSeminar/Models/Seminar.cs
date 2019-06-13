@@ -10,17 +10,17 @@ namespace AlgebraSeminar.Models
     {
         [Key]
         public int SeminarId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Naziv seminara je obavezan!")]
         [StringLength(100)]
         public string Naziv { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Opis seminara je obavezan!")]
         [StringLength(200)]
         public string Opis { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Datum održavanja seminara je obavezan!")]
         public DateTime Datum { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Broj mjesta na seminaru je obavezan!")]
         public int BrojSlobodnihMjesta { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Unos predavača je obavezan!")]
         [StringLength(100)]
         public string Predavac { get; set; }
     }

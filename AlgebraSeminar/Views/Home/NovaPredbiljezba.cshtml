@@ -1,50 +1,54 @@
-﻿@model AlgebraSeminar.DTOs.PredbiljezbaZaUpis
+﻿@using AlgebraSeminar.Models
+@model Predbiljezba
 @{
     ViewBag.Title = "NovaPredbiljezba";
+    Seminar seminar = (Seminar)Session["OdabraniSeminar"];
 }
-<h1>Unos nove predbilježbe za seminar @Model.Seminar.Naziv</h1>
+<h1>Unos nove predbilježbe za @seminar.Naziv</h1>
 
 <form class="form-horizontal" action="NovaPredbiljezba" method="post">
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Datum, DateTime.Now)
+    @Html.HiddenFor(model => model.Seminar, seminar)
 
     <div class="form-group">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Predbiljezba.SeminarId, Model.Predbiljezba.SeminarId)
+        @Html.HiddenFor(model => model.SeminarId, Model.SeminarId)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Predbiljezba.Ime, new { @class = "control-label col-sm-2" })
-        @Html.TextBoxFor(model => model.Predbiljezba.Ime, new { @class = "form-control col-sm-10" })
-        @Html.ValidationMessageFor(model => model.Predbiljezba.Ime, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.Ime, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Ime, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Ime, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Predbiljezba.Prezime, new { @class = "control-label col-sm-2" })
-        @Html.TextBoxFor(model => model.Predbiljezba.Prezime, new { @class = "form-control col-sm-10" })
-        @Html.ValidationMessageFor(model => model.Predbiljezba.Prezime, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.Prezime, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Prezime, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Prezime, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Predbiljezba.Adresa, new { @class = "control-label col-sm-2" })
-        @Html.TextBoxFor(model => model.Predbiljezba.Adresa, new { @class = "form-control col-sm-10" })
-        @Html.ValidationMessageFor(model => model.Predbiljezba.Adresa, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.Adresa, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Adresa, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Adresa, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Predbiljezba.Email, new { @class = "control-label col-sm-2" })
-        @Html.TextBoxFor(model => model.Predbiljezba.Email, new { @class = "form-control col-sm-10" })
-        @Html.ValidationMessageFor(model => model.Predbiljezba.Email, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.Email, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Predbiljezba.Telefon, new { @class = "control-label col-sm-2" })
-        @Html.TextBoxFor(model => model.Predbiljezba.Telefon, new { @class = "form-control col-sm-10" })
-        @Html.ValidationMessageFor(model => model.Predbiljezba.Telefon, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.Telefon, new { @class = "control-label col-sm-2" })
+        @Html.TextBoxFor(model => model.Telefon, new { @class = "form-control col-sm-10" })
+        @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Seminar.Datum, new { @class = "control-label col-sm-2" })
-        @Html.TextBoxFor(model => model.Seminar.Datum, new { @readonly="readonly", @class = "form-control col-sm-10" })
+        @Html.TextBoxFor(model => seminar.Datum, new { @readonly = "readonly", @class = "form-control col-sm-10" })
     </div>
 
     <div class="form-group">
