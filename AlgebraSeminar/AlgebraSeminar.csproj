@@ -156,6 +156,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Data\AlgebraDBContext.cs" />
@@ -190,6 +191,10 @@
     <Compile Include="Migrations\201906130822139_fixedlength.cs" />
     <Compile Include="Migrations\201906130822139_fixedlength.Designer.cs">
       <DependentUpon>201906130822139_fixedlength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906140522049_fixedClasses.cs" />
+    <Compile Include="Migrations\201906140522049_fixedClasses.Designer.cs">
+      <DependentUpon>201906140522049_fixedClasses.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthorizeJWT.cs" />
@@ -228,6 +233,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Images\401.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -259,8 +265,9 @@
     <Content Include="Views\Home\Seminari.cshtml" />
     <Content Include="Views\Home\DodajNovogZaposlenika.cshtml" />
     <Content Include="Views\Auth\Prijava.cshtml" />
-    <Content Include="Views\Auth\LoginUspjesan.cshtml" />
     <Content Include="Views\Shared\_Layout_registered.cshtml" />
+    <Content Include="Views\Errors\NotFound.cshtml" />
+    <Content Include="Views\Errors\Unauthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -289,7 +296,11 @@
     <EmbeddedResource Include="Migrations\201906130822139_fixedlength.resx">
       <DependentUpon>201906130822139_fixedlength.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906140522049_fixedClasses.resx">
+      <DependentUpon>201906140522049_fixedClasses.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

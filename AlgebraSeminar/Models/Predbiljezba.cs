@@ -24,6 +24,7 @@ namespace AlgebraSeminar.Models
         public string Adresa { get; set; }
         [Required(ErrorMessage = "E-mail adresa je obavezna!")]
         [EmailAddress(ErrorMessage = "Format e-mail adrese nije valjan!")]
+        [StringLength(100)]
         public string Email { get; set; }
         [Required(ErrorMessage = "Broj telefona je obavezan!")]
         [StringLength(30)]

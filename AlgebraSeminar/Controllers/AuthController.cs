@@ -30,13 +30,16 @@ namespace AlgebraSeminar.Controllers
                 if (trenutniZaposlenik != null)
                 {
                     string token = TokenManager.GenerateToken(trenutniZaposlenik);
-                    System.Web.HttpContext.Current.Response.Cookies.Add(new HttpCookie("auth_token")
+                    //If expiration date isn't set, cookie disappears when browser is closed
+                    HttpCookie cookie = new HttpCookie("auth_token")
                     {
                         Value = token,
-                        HttpOnly = true
-                    });
-                    Session["TrenutniZaposlenik"] = String.Format("Prijavljeni ste kao {0} {1}", trenutniZaposlenik.Ime, trenutniZaposlenik.Prezime);
-                    return View("LoginUspjesan");
+                        HttpOnly = true,
+                        Expires= DateTime.Now.AddMinutes(30)
+                    };
+                    System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
+
+                    return RedirectToAction("Predbiljezba", "Home");
                 }
                 ViewBag.ErrorMessage = "Korisničko ime ili lozinka nisu ispravni!";
             }

@@ -7,7 +7,6 @@ using System.Web.Mvc;
 
 namespace AlgebraSeminar.Controllers
 {
-    [HandleError(View = "Error.cshtml")]
     public class HomeController : Controller
     {
         private readonly ISeminarRepository _seminari;
@@ -35,6 +34,7 @@ namespace AlgebraSeminar.Controllers
 
             Predbiljezba model = new Predbiljezba
             {
+                Datum = DateTime.Now,
                 SeminarId = seminarId,
             };
             return View(model);
@@ -45,7 +45,7 @@ namespace AlgebraSeminar.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 _predbiljezbe.UpisiPredbiljezbu(predbiljezba);
                 Session["OdabraniSeminar"] = null;
                 return View("PredbiljezbaSuccess");
