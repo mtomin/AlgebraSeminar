@@ -1,17 +1,19 @@
 ﻿@model AlgebraSeminar.Models.Zaposlenik
+@{
+    ViewBag.Title = "Dodaj novog zaposlenika";
+}
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>DodajNovogZaposlenika</title>
 </head>
 <body>
     <div>
         <form class="form-horizontal" method="post" style="padding-top: 20px">
             @Html.Hidden("LozinkaSalt", "_");
-            
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Ime, new { @class = "control-label col-sm-2" })
                 @Html.TextBoxFor(model => model.Ime, new { @class = "form-control col-sm-10" })

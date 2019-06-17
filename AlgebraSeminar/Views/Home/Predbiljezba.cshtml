@@ -1,11 +1,14 @@
 ﻿@model List<AlgebraSeminar.Models.Seminar>
+@{
+    ViewBag.Title = "Predbilježba";
+}
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Predbilježba</title>
+
 </head>
 <body>
     @using (Html.BeginForm("Predbiljezba", "Home", FormMethod.Get))
@@ -21,6 +24,10 @@
     <table class="table table-responsive">
         <thead>
             <tr>
+                @if (Session["TrenutniZaposlenik"] != null)
+                {
+                    <th scope="col"></th>
+                }
                 <th scope="col"></th>
                 <th scope="col">Naziv seminara</th>
                 <th scope="col">Opis</th>
@@ -34,6 +41,10 @@
                 foreach (var seminar in Model)
                 {
                     <tr>
+                        @if (Session["TrenutniZaposlenik"] != null)
+                        {
+                            <td>@Html.ActionLink("uredi", "UrediSeminar", new { id = seminar.SeminarId })</td>
+                        }
                         <td>@Html.ActionLink("odaberi", "NovaPredbiljezba", new { seminarId = seminar.SeminarId })</td>
                         <td>@seminar.Naziv</td>
                         <td>@seminar.Opis</td>

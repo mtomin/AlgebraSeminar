@@ -1,11 +1,13 @@
 ﻿@model List<AlgebraSeminar.Models.Predbiljezba>
+@{
+    ViewBag.Title = "Pregled predbilježbi";
+}
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Predbiljezbe</title>
 </head>
 <body>
     @using (Html.BeginForm("Predbiljezbe", "Home", FormMethod.Post))
@@ -66,7 +68,7 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody  class="collapse in table2">
+        <tbody class="collapse in table2">
             @{
                 foreach (var predbiljezba in Model.Where(m => m.Status == 2))
                 {
@@ -99,7 +101,7 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody  class="collapse in table3">
+        <tbody class="collapse in table3">
             @{
                 foreach (var predbiljezba in Model.Where(m => m.Status == 1))
                 {

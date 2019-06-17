@@ -124,5 +124,51 @@ namespace AlgebraSeminar.Controllers
 
             return View();
         }
+
+        [AuthorizeJWT]
+        [HttpGet]
+        public ActionResult DodajSeminar()
+        {
+            return View();
+        }
+
+        [AuthorizeJWT]
+        [HttpPost]
+        public ActionResult DodajSeminar(Seminar seminar)
+        {
+            if (ModelState.IsValid)
+            {
+                _seminari.DodajSeminar(seminar);
+                return RedirectToAction("Predbiljezba");
+            }
+            return View(seminar);
+        }
+
+        [AuthorizeJWT]
+        [HttpGet]
+        public ActionResult UrediSeminar(int id)
+        {
+            Seminar model = _seminari.GetSeminar(id);
+            return View(model);
+        }
+
+        [AuthorizeJWT]
+        [HttpPost]
+        public ActionResult UrediSeminar(Seminar seminar)
+        {
+            if (ModelState.IsValid)
+            {
+                _seminari.UrediSeminar(seminar);
+                return RedirectToAction("Predbiljezba");
+            }
+            return View(seminar);
+        }
+
+        [AuthorizeJWT]
+        public ActionResult ObrisiSeminar(int id)
+        {
+            _seminari.ObrisiSeminar(id);
+            return RedirectToAction("Predbiljezba");
+        }
     }
 }
