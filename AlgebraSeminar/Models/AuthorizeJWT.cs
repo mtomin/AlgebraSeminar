@@ -39,7 +39,7 @@ namespace AlgebraSeminar.Models
             {
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
-                ValidateAudience = false, // Because there is no audiance in the generated token
+                ValidateAudience = false, // Because there is no audience in the generated token
                 ValidateIssuer = false,   // Because there is no issuer in the generated token
 
                 IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(secret))

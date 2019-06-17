@@ -35,7 +35,7 @@ namespace AlgebraSeminar.Controllers
                     {
                         Value = token,
                         HttpOnly = true,
-                        Expires= DateTime.Now.AddMinutes(30)
+                        Expires = DateTime.Now.AddMinutes(30)
                     };
                     System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
 
@@ -49,9 +49,12 @@ namespace AlgebraSeminar.Controllers
         public ActionResult Odjava()
         {
             HttpCookie authCookie = Request.Cookies["auth_token"];
-            authCookie.Expires = DateTime.Now.AddDays(-10);
-            authCookie.Value = null;
-            Response.SetCookie(authCookie);
+            if (authCookie != null)
+            {
+                authCookie.Expires = DateTime.Now.AddDays(-10);
+                authCookie.Value = null;
+                Response.SetCookie(authCookie);
+            }
             return RedirectToAction("Predbiljezba", "Home");
         }
     }

@@ -45,7 +45,6 @@ namespace AlgebraSeminar.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 _predbiljezbe.UpisiPredbiljezbu(predbiljezba);
                 Session["OdabraniSeminar"] = null;
                 return View("PredbiljezbaSuccess");
@@ -64,13 +63,14 @@ namespace AlgebraSeminar.Controllers
         [HttpPost]
         public ActionResult Predbiljezbe(string query, string tippretrage)
         {
+            query = query.ToLower();
+
             //Overly elaborate way to filter predbiljezbe by Prezime or Seminar.Naziv
-            List<Predbiljezba> model = (tippretrage == "Pretraži po prezimenu") ?
-                _predbiljezbe.GetPredbiljezbe().Where(p => p.Prezime.ToLower().Contains(query.ToLower())).ToList()
-                : _predbiljezbe.GetPredbiljezbe().Where(p => p.Seminar.Naziv.ToLower().Contains(query.ToLower())).ToList();
+            List<Predbiljezba> model = _predbiljezbe.GetPredbiljezbe().Where(p => (tippretrage == "Pretraži po prezimenu") ? p.Prezime.ToLower().Contains(query) : p.Seminar.Naziv.ToLower().Contains(query)).ToList();
 
             return View(model);
         }
+
         [AuthorizeJWT]
         [HttpGet]
         public ActionResult UrediPredbiljezbu(int IdPredbiljezba)
@@ -100,7 +100,7 @@ namespace AlgebraSeminar.Controllers
                     Message = "Seminar je pun!",
                     Seminari = _seminari.GetAllSeminars()
                 };
-                model.Predbiljezba.Seminar = model.Seminari.First(s => s.SeminarId == model.Predbiljezba.SeminarId);
+                model.Predbiljezba.Seminar = model.Seminari.Single(s => s.SeminarId == model.Predbiljezba.SeminarId);
                 return View(model);
             }
 
@@ -112,6 +112,7 @@ namespace AlgebraSeminar.Controllers
         {
             return View();
         }
+
         [AuthorizeJWT]
         [HttpPost]
         public ActionResult DodajNovogZaposlenika(Zaposlenik zaposlenik)

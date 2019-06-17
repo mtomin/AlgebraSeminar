@@ -34,14 +34,14 @@ namespace AlgebraSeminar.Models
 
         public void UrediSeminar(Seminar seminar)
         {
-            var seminarToUpdate = DbContext.Seminari.First(s => s.SeminarId == seminar.SeminarId);
+            var seminarToUpdate = DbContext.Seminari.Single(s => s.SeminarId == seminar.SeminarId);
             DbContext.Entry(seminarToUpdate).CurrentValues.SetValues(seminar);
             DbContext.SaveChanges();
         }
 
         public void ObrisiSeminar(int seminarId)
         {
-            var seminarToDelete = DbContext.Seminari.FirstOrDefault(s => s.SeminarId == seminarId);
+            var seminarToDelete = DbContext.Seminari.Single(s => s.SeminarId == seminarId);
             if (seminarToDelete != null)
             {
                 DbContext.Seminari.Remove(seminarToDelete);

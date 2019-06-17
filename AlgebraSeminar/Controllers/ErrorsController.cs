@@ -8,7 +8,6 @@ namespace AlgebraSeminar.Controllers
 {
     public class ErrorsController : Controller
     {
-        // GET: Errors
         public ActionResult NotFound()
         {
             return View();
