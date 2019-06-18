@@ -4,7 +4,7 @@ namespace AlgebraSeminar.Models
 {
     public interface ISeminarRepository
     {
-        List<Seminar> GetAllSeminars();
+        List<Seminar> GetAllSeminars(string query = null);
         List<Seminar> GetUnfilledSeminars(string query=null);
         Seminar GetSeminar(int seminarId);
         void DodajSeminar(Seminar seminar);

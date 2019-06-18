@@ -270,6 +270,7 @@
     <Content Include="Views\Home\UrediSeminar.cshtml" />
     <Content Include="Views\Shared\_NavigationBar.cshtml" />
     <Content Include="Views\Shared\_NavigationBarRegistered.cshtml" />
+    <Content Include="Views\Home\_TablicaSeminara.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -321,7 +322,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64178</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44361/</IISUrl>
+          <IISUrl>http://localhost:44361/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

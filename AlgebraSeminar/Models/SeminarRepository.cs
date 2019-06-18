@@ -9,9 +9,10 @@ namespace AlgebraSeminar.Models
     {
         [Dependency]
         public AlgebraDBContext DbContext { get; set; }
-        public List<Seminar> GetAllSeminars()
+        public List<Seminar> GetAllSeminars(string query)
         {
-            List<Seminar> seminari = DbContext.Seminari.ToList();
+            query = (query ?? "").ToLower();
+            List<Seminar> seminari = DbContext.Seminari.Where(s => s.Naziv.ToLower().Contains(query)).ToList();
             return seminari;
         }
 

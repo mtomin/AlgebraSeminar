@@ -1,6 +1,7 @@
 ﻿@model List<AlgebraSeminar.Models.Seminar>
 @{
     ViewBag.Title = "Predbilježba";
+    var nepopunjeniSeminari = Model.Where(x => x.BrojSlobodnihMjesta > 0).ToList();
 }
 
 <!DOCTYPE html>
@@ -21,41 +22,12 @@
         </div>
     }
 
-    <table class="table table-responsive">
-        <thead>
-            <tr>
-                @if (Session["TrenutniZaposlenik"] != null)
-                {
-                    <th scope="col"></th>
-                }
-                <th scope="col"></th>
-                <th scope="col">Naziv seminara</th>
-                <th scope="col">Opis</th>
-                <th scope="col">Datum</th>
-                <th scope="col">Predavač</th>
-                <th scope="col">Broj mjesta</th>
-            </tr>
-        </thead>
-        <tbody>
-            @{
-                foreach (var seminar in Model)
-                {
-                    <tr>
-                        @if (Session["TrenutniZaposlenik"] != null)
-                        {
-                            <td>@Html.ActionLink("uredi", "UrediSeminar", new { id = seminar.SeminarId })</td>
-                        }
-                        <td>@Html.ActionLink("odaberi", "NovaPredbiljezba", new { seminarId = seminar.SeminarId })</td>
-                        <td>@seminar.Naziv</td>
-                        <td>@seminar.Opis</td>
-                        <td>@seminar.Datum.ToShortDateString()</td>
-                        <td>@seminar.Predavac</td>
-                        <td>@seminar.BrojSlobodnihMjesta</td>
-                    </tr>
+    @Html.Partial("_TablicaSeminara", Model.Where(x => x.BrojSlobodnihMjesta > 0).ToList())
 
-                }
-            }
-        </tbody>
-    </table>
+    @if (Session["TrenutniZaposlenik"] != null && nepopunjeniSeminari != null)
+    {
+        <h3>Popunjeni seminari:</h3>
+        @Html.Partial("_TablicaSeminara", nepopunjeniSeminari)
+    }
 </body>
 </html>

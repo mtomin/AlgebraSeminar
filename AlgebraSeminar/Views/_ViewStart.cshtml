@@ -5,7 +5,7 @@
 
     if (Request.Cookies["auth_token"] == null)
     {
-        Session["TrenutniKorisnik"] = null;
+        Session["TrenutniZaposlenik"] = null;
     }
     else
     {
@@ -19,7 +19,7 @@
             }
             else
             {
-                Session["TrenutniKorisnik"] = null;
+                Session["TrenutniZaposlenik"] = null;
             }
 
         }

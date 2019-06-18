@@ -23,7 +23,7 @@ namespace AlgebraSeminar.Controllers
         [HttpGet]
         public ActionResult Predbiljezba(string query = null)
         {
-            List<Seminar> model = _seminari.GetUnfilledSeminars(query);
+            List<Seminar> model = _seminari.GetAllSeminars(query);
             return View(model);
         }
 
