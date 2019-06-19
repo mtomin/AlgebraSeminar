@@ -261,7 +261,6 @@
     <Content Include="Views\Home\NovaPredbiljezba.cshtml" />
     <Content Include="Views\Home\Predbiljezbe.cshtml" />
     <Content Include="Views\Home\UrediPredbiljezbu.cshtml" />
-    <Content Include="Views\Home\Seminari.cshtml" />
     <Content Include="Views\Home\DodajNovogZaposlenika.cshtml" />
     <Content Include="Views\Auth\Prijava.cshtml" />
     <Content Include="Views\Errors\NotFound.cshtml" />
