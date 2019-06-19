@@ -14,6 +14,7 @@ namespace AlgebraSeminar.Models
         public string Prezime { get; set; }
         [Required(ErrorMessage = "Korisničko ime je obavezno!")]
         [StringLength(20)]
+        [Display(Name = "Korisničko ime")]
         public string KorisnickoIme { get; set; }
         [Required(ErrorMessage = "Lozinka je obavezna!")]
         [StringLength(100)]

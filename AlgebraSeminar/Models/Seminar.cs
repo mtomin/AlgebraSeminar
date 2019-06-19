@@ -19,9 +19,11 @@ namespace AlgebraSeminar.Models
         [Required(ErrorMessage = "Datum održavanja seminara je obavezan!")]
         public DateTime Datum { get; set; }
         [Required(ErrorMessage = "Broj mjesta na seminaru je obavezan!")]
+        [Display(Name = "Broj slobodnih mjesta")]
         public int BrojSlobodnihMjesta { get; set; }
         [Required(ErrorMessage = "Unos predavača je obavezan!")]
         [StringLength(100)]
+        [Display(Name = "Predavač")]
         public string Predavac { get; set; }
     }
 }
