@@ -11,7 +11,12 @@ Visitors can see unfilled seminars, search them by the course name and register 
 
 ### Employee pages
 
-Employee pages are accessible after sign in. Upon signing in, a different navigation bar is rendered and the user is authorized to access pages for adding seminars, adding new emplyoees and editing (including approving and declining) registration requests. Additionally, an employee can also see the seminars which have already been filled.
+Employee pages are accessible after sign in. Upon signing in, a different navigation bar is rendered and the user is authorized to:
+- See already filled seminars
+- Edit seminars
+- Add seminars
+- Add new emplyoees 
+- Edit (including approving and declining) registration requests
 
 ![Employee pages](https://i.imgur.com/MAVzcaZ.png)
 
